@@ -36,7 +36,7 @@ fun createMainFile(rootFolder: File, pluginName: String, pluginPackage: String) 
     file.mkdirs()
     file = File(file, "$pluginName.kt")
     file.createNewFile()
-    val writer = FileWriter(file, Charsets.UTF_8)
+    val writer = FileWriter(file)
     writer.write(
         "package $pluginPackage\n" +
                 "\n" +
@@ -74,11 +74,11 @@ fun createGradleFiles(
     println("Creating gradle files... ")
     var file = File(rootFolder, "build.gradle.kts")
     file.createNewFile()
-    var writer = FileWriter(file, Charsets.UTF_8)
+    var writer = FileWriter(file)
     print("  build.gradle.kts ... ")
     writer.write(
         "plugins {\n" +
-                "    kotlin(\"jvm\") version \"1.9.22\"\n" +
+                "    kotlin(\"jvm\") version \"1.9.24\"\n" +
                 "    java\n" +
                 (if (useNMS) "    id(\"io.papermc.paperweight.userdev\") version \"1.5.11\"\n" else "") +
                 "}\n" +
@@ -177,7 +177,7 @@ fun createPluginYml(rootFolder: File, pluginName: String, pluginPackage: String,
                 "#website: https://example.com/\n" +
                 "\n" +
                 "libraries:\n" +
-                "  - \"org.jetbrains.kotlin:kotlin-stdlib:1.9.22\"\n\n"
+                "  - \"org.jetbrains.kotlin:kotlin-stdlib:1.9.24\"\n\n"
     )
     writer.close()
     println("DONE")
